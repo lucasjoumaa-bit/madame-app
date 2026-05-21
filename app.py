@@ -11,7 +11,10 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
+from download_models import ensure_models_downloaded
 
+if config.IS_CLOUD:
+    ensure_models_downloaded()
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
