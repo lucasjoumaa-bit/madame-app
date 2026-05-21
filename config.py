@@ -4,6 +4,8 @@ Settings loaded from environment variables / .env file.
 On Streamlit Cloud, secrets are set in the dashboard instead of .env.
 """
 import os
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
+
 from dotenv import load_dotenv
 
 load_dotenv()
