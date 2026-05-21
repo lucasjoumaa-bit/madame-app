@@ -11,12 +11,6 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
-from download_models import ensure_models_downloaded
-
-# Download model files from Google Drive if running on cloud
-if config.IS_CLOUD:
-    ensure_models_downloaded()
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
@@ -422,16 +416,9 @@ def load_models():
 models_tuple, load_errors = load_models()
 
 if models_tuple is None:
-    md("""
-    <div class="unavail">
-      <div class="unavail-icon">👗</div>
-      <div class="unavail-title">Madame is getting dressed</div>
-      <div class="unavail-desc">
-        The service is temporarily unavailable.<br>
-        Please check back shortly or contact the administrator.
-      </div>
-    </div>
-    """)
+    st.error("### Failed to load models")
+    for issue in load_errors:
+        st.code(issue)
     st.stop()
 
 (yolo_model, clip_model, clip_preprocess, id_to_name, device,
