@@ -289,7 +289,8 @@ def load_models():
 # BOOT
 # ─────────────────────────────────────────────────────────────────────────────
 
-models_tuple, load_errors = load_models()
+with st.spinner("\U0001f457 Madame is getting dressed — loading models, please wait…"):
+    models_tuple, load_errors = load_models()
 
 if models_tuple is None:
     md("""
@@ -302,6 +303,8 @@ if models_tuple is None:
       </div>
     </div>
     """)
+    if load_errors:
+        st.error("Configuration issues: " + " \u00b7 ".join(load_errors))
     st.stop()
 
 (yolo_model, clip_model, clip_preprocess, id_to_name, device,
