@@ -3,7 +3,11 @@ config.py — Madame de la Grande Bouche
 Settings loaded from environment variables / .env file.
 On Streamlit Cloud, secrets are set in the dashboard instead of .env.
 """
-import os
+import config
+from download_models import ensure_models_downloaded
+
+if config.IS_CLOUD:
+    ensure_models_downloaded()
 
 
 from dotenv import load_dotenv
