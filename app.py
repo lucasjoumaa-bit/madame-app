@@ -4,13 +4,13 @@ Consumer-facing Streamlit app.
 Upload clothes -> segment -> build wardrobe -> get outfit.
 All config lives in .env - users see zero technical details.
 """
-import os
-os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "0"
-os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 from __future__ import annotations
 import os, sys, io, json, base64
 import streamlit as st
 from PIL import Image
+import os
+os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "0"
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
