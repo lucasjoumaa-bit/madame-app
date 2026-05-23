@@ -6,7 +6,7 @@ load_dotenv()
 IS_CLOUD = os.path.exists("/mount/src")
 
 if IS_CLOUD:
-    _MODELS_DIR = "/mount/src/madame-app/models"
+    _MODELS_DIR = "/tmp/madame_models"
     YOLO_MODEL_PATH      = os.path.join(_MODELS_DIR, "best.pt")
     ANNOTATION_JSON_PATH = os.path.join(_MODELS_DIR, "instances_train2020_clean.json")
     ATTR_MODEL_PATH      = os.path.join(_MODELS_DIR, "best_model.pt")
